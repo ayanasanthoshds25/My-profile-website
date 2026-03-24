@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ayana Santhosh Khan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --cream: #f8f5ef;
+      --ivory: #fdfcfa;
+      --sage: #7a9e87;
+      --sage-light: #a8c4b0;
+      --sage-dark: #4e7a60;
+      --charcoal: #2c2c2c;
+      --warm-gray: #6b6560;
+      --border: #e2ddd6;
+      --gold: #b8935a;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--ivory);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.4rem 4rem;
+      background: rgba(253,252,250,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--charcoal); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--warm-gray); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--sage-dark); }
+
+    /* HERO */
+    #home {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 4rem 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 80% 50%, rgba(122,158,135,0.13) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(184,147,90,0.07) 0%, transparent 60%);
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-eyebrow {
+      font-size: 0.74rem; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--sage); margin-bottom: 1.2rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block;
+      width: 2rem; height: 1px; background: var(--sage);
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5vw, 5rem);
+      font-weight: 300; line-height: 1.08;
+      color: var(--charcoal); margin-bottom: 0.3rem;
+    }
+    h1 em { font-style: italic; color: var(--sage-dark); }
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; font-weight: 300; font-style: italic;
+      color: var(--warm-gray); margin: 1.2rem 0 2.4rem; line-height: 1.6;
+    }
+    .hero-cta { display: inline-flex; gap: 1rem; }
+    .btn-primary {
+      padding: 0.75rem 2rem;
+      background: var(--sage-dark); color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--sage); transform: translateY(-2px); }
+    .btn-outline {
+      padding: 0.75rem 2rem; background: transparent;
+      color: var(--charcoal);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; border: 1px solid var(--border); cursor: pointer;
+      transition: border-color 0.25s, color 0.25s, transform 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--sage); color: var(--sage-dark); transform: translateY(-2px); }
+
+    .hero-visual {
+      position: relative; z-index: 1;
+      display: flex; justify-content: flex-end; align-items: center;
+    }
+    .hero-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      padding: 2.5rem; max-width: 340px;
+      position: relative;
+    }
+    .hero-card::before {
+      content: '';
+      position: absolute; top: -6px; left: -6px; right: 6px; bottom: 6px;
+      border: 1px solid var(--sage-light); z-index: -1;
+    }
+    .card-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--charcoal); margin-bottom: 1.2rem;
+    }
+    .highlight-list { list-style: none; }
+    .highlight-list li {
+      display: flex; align-items: flex-start; gap: 0.8rem;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.87rem; color: var(--warm-gray); line-height: 1.4;
+    }
+    .highlight-list li:last-child { border-bottom: none; }
+    .highlight-list li::before {
+      content: '✦'; color: var(--sage);
+      font-size: 0.55rem; margin-top: 0.3rem; flex-shrink: 0;
+    }
+
+    /* SECTIONS */
+    section { padding: 6rem 4rem; }
+    #education, #contact { background: var(--cream); }
+    .section-label {
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--sage); margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300; line-height: 1.15;
+      color: var(--charcoal); margin-bottom: 3rem;
+    }
+    .section-title em { font-style: italic; color: var(--sage-dark); }
+    .divider {
+      width: 3rem; height: 1px;
+      background: var(--gold); margin-bottom: 1.2rem;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1.6fr;
+      gap: 4rem; align-items: start;
+    }
+    .about-intro {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 300; font-style: italic;
+      line-height: 1.7; color: var(--charcoal);
+      border-left: 2px solid var(--sage-light);
+      padding-left: 1.5rem;
+    }
+    .about-body p {
+      font-size: 0.93rem; line-height: 1.85;
+      color: var(--warm-gray); margin-bottom: 1.2rem;
+    }
+    .about-body p:last-child { margin-bottom: 0; }
+
+    /* EDUCATION */
+    .edu-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    }
+    .edu-card {
+      border: 1px solid var(--border);
+      padding: 2rem 2.2rem;
+      position: relative; overflow: hidden;
+      background: var(--ivory);
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .edu-card:hover {
+      box-shadow: 0 12px 40px rgba(78,122,96,0.1);
+      transform: translateY(-4px);
+    }
+    .edu-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--sage-dark), var(--sage-light));
+    }
+    .edu-year {
+      font-size: 0.74rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--sage); margin-bottom: 0.6rem;
+    }
+    .edu-degree {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 600;
+      color: var(--charcoal); margin-bottom: 0.4rem; line-height: 1.3;
+    }
+    .edu-institution { font-size: 0.85rem; color: var(--warm-gray); }
+
+    /* SKILLS */
+    .skills-layout {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+    }
+    .skills-group-title {
+      font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.3rem;
+    }
+    .skill-item { margin-bottom: 1.2rem; }
+    .skill-name {
+      font-size: 0.87rem; color: var(--charcoal); margin-bottom: 0.4rem;
+    }
+    .skill-bar {
+      height: 2px; background: var(--border);
+      position: relative; overflow: hidden;
+    }
+    .skill-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--sage-dark), var(--sage-light));
+      animation: fillBar 1.4s ease forwards;
+    }
+    @keyframes fillBar { from { width: 0; } }
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .tag {
+      padding: 0.35rem 0.9rem;
+      border: 1px solid var(--border);
+      font-size: 0.8rem; color: var(--warm-gray);
+      letter-spacing: 0.04em; transition: all 0.2s; cursor: default;
+    }
+    .tag:hover { border-color: var(--sage); color: var(--sage-dark); background: rgba(122,158,135,0.06); }
+
+    /* CONTACT */
+    #contact { background: var(--charcoal) !important; color: #fff; }
+    #contact .section-label { color: var(--sage-light); }
+    #contact .section-title { color: #fff; }
+    #contact .section-title em { color: var(--sage-light); }
+    #contact .divider { background: var(--sage); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: start;
+    }
+    .contact-desc {
+      font-size: 0.93rem; line-height: 1.8;
+      color: rgba(255,255,255,0.5); margin-bottom: 2rem;
+    }
+    .contact-link {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      text-decoration: none; color: rgba(255,255,255,0.7);
+      font-size: 0.9rem; transition: color 0.2s;
+    }
+    .contact-link:hover { color: var(--sage-light); }
+    .contact-icon {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; flex-shrink: 0;
+    }
+    .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-field label {
+      font-size: 0.7rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(255,255,255,0.35);
+    }
+    .form-field input, .form-field textarea {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #fff; padding: 0.75rem 1rem;
+      font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
+      outline: none; transition: border-color 0.2s;
+    }
+    .form-field input:focus, .form-field textarea:focus { border-color: var(--sage); }
+    .form-field textarea { resize: vertical; min-height: 100px; }
+    .btn-send {
+      align-self: flex-start;
+      padding: 0.8rem 2.2rem;
+      background: var(--sage-dark); color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      border: none; cursor: pointer; transition: background 0.25s;
+    }
+    .btn-send:hover { background: var(--sage); }
+
+    /* FOOTER */
+    footer {
+      background: #1a1a1a;
+      padding: 1.4rem 4rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    footer p { font-size: 0.78rem; color: rgba(255,255,255,0.3); letter-spacing: 0.04em; }
+
+    /* FADE ANIMATION */
+    .fade-up {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      #home { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
+      .hero-visual { justify-content: flex-start; margin-top: 2.5rem; }
+      .hero-card { max-width: 100%; }
+      section { padding: 4rem 1.5rem; }
+      .about-grid, .edu-grid, .skills-layout,
+      .contact-grid, .form-row { grid-template-columns: 1fr; gap: 1.5rem; }
+      footer { flex-direction: column; gap: 0.4rem; padding: 1.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#home" class="nav-logo">Ayana S. Khan</a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-content fade-up">
+      <p class="hero-eyebrow">Data Science &amp; Bio AI</p>
+      <h1>Ayana<br><em>Santhosh Khan</em></h1>
+      <p class="hero-tagline">Where biology meets artificial intelligence —<br>transforming data into life-changing insights.</p>
+      <div class="hero-cta">
+        <a href="#about" class="btn-primary">Discover More</a>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-visual fade-up" style="transition-delay:0.2s">
+      <div class="hero-card">
+        <p class="card-heading">Key Highlights</p>
+        <ul class="highlight-list">
+          <li>Strong foundation in molecular biology</li>
+          <li>Experienced in bioinformatics</li>
+          <li>Research &amp; analytical thinking</li>
+          <li>Eager to learn new technologies</li>
+          <li>Passionate about computational biology</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label fade-up">About Me</p>
+    <div class="divider fade-up"></div>
+    <h2 class="section-title fade-up">Bridging <em>biology</em><br>and intelligence</h2>
+    <div class="about-grid">
+      <div class="about-intro fade-up">
+        "I believe the integration of biology and artificial intelligence has the potential to drive the next generation of medical breakthroughs."
+      </div>
+      <div class="about-body fade-up" style="transition-delay:0.15s">
+        <p>I am an M.Sc student specialising in Data Science and Bio AI at Digital University Kerala, with a background in B.Sc Botany and Biotechnology from Mar Ivanios College. My academic path is shaped by a deep curiosity about how technology can help us understand and improve the natural world.</p>
+        <p>My focus lies in applying computational and data-driven methods to complex biological challenges — particularly in machine learning-assisted drug discovery, disease prediction, and personalised medicine. I enjoy uncovering meaningful patterns from large datasets and translating them into actionable insights for healthcare.</p>
+        <p>I aspire to bridge the gap between computer science and laboratory research, and to be part of interdisciplinary efforts that drive genuine innovation in global health.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="section-label fade-up">Education</p>
+    <div class="divider fade-up"></div>
+    <h2 class="section-title fade-up">Academic <em>journey</em></h2>
+    <div class="edu-grid">
+      <div class="edu-card fade-up">
+        <p class="edu-year">2025 – 2027</p>
+        <p class="edu-degree">M.Sc Data Science &amp; Bio AI</p>
+        <p class="edu-institution">Digital University Kerala</p>
+      </div>
+      <div class="edu-card fade-up" style="transition-delay:0.15s">
+        <p class="edu-year">2022 – 2025</p>
+        <p class="edu-degree">B.Sc Botany &amp; Biotechnology</p>
+        <p class="edu-institution">Mar Ivanios College</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label fade-up">Skills</p>
+    <div class="divider fade-up"></div>
+    <h2 class="section-title fade-up">Areas of <em>expertise</em></h2>
+    <div class="skills-layout">
+      <div class="fade-up">
+        <p class="skills-group-title">Technical &amp; Scientific</p>
+        <div class="skill-item">
+          <div class="skill-name">Bioinformatics</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">Molecular Biology</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">Computer-Aided Drug Design</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:72%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">Python</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:68%"></div></div>
+        </div>
+      </div>
+      <div class="fade-up" style="transition-delay:0.15s">
+        <p class="skills-group-title">Professional Skills</p>
+        <div class="tag-cloud">
+          <span class="tag">Data Analysis</span>
+          <span class="tag">Research</span>
+          <span class="tag">Critical Thinking</span>
+          <span class="tag">Problem Solving</span>
+          <span class="tag">Communication</span>
+          <span class="tag">Machine Learning</span>
+          <span class="tag">Genomics</span>
+          <span class="tag">HTML &amp; CSS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label fade-up">Contact</p>
+    <div class="divider fade-up"></div>
+    <h2 class="section-title fade-up">Let's <em>connect</em></h2>
+    <div class="contact-grid">
+      <div class="fade-up">
+        <p class="contact-desc">I'm always open to research collaborations, academic opportunities, or simply a thoughtful conversation about Bio AI and data science. Feel free to reach out!</p>
+        <a href="mailto:ayanasanthoshkhan@gmail.com" class="contact-link">
+          <span class="contact-icon">✉</span>
+          ayanasanthoshkhan@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/ayana-santhosh-khan-714a07353/" class="contact-link">
+          <span class="contact-icon">in</span>
+          LinkedIn Profile
+        </a>
+        <a href="https://github.com/ayanasanthoshds25" class="contact-link">
+          <span class="contact-icon">⌥</span>
+          GitHub Profile
+        </a>
+      </div>
+      <div class="contact-form fade-up" style="transition-delay:0.15s">
+        <div class="form-row">
+          <div class="form-field">
+            <label>Name</label>
+            <input type="text" placeholder="Your name" />
+          </div>
+          <div class="form-field">
+            <label>Email</label>
+            <input type="email" placeholder="your@email.com" />
+          </div>
+        </div>
+        <div class="form-field">
+          <label>Message</label>
+          <textarea placeholder="What would you like to discuss?"></textarea>
+        </div>
+        <button class="btn-send">Send Message</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Ayana Santhosh Khan</p>
+    <p>M.Sc Data Science &amp; Bio AI · Digital University Kerala</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
